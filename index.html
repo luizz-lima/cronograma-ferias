@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Férias System</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">System Integration</p>
+          <h1>Férias System</h1>
+        </div>
+        <div class="top-actions">
+          <button class="ghost" id="exportJsonButton" type="button">Exportar</button>
+          <button class="ghost" id="syncButton" type="button">Sincronizar</button>
+          <label class="ghost file-action">
+            Importar
+            <input id="importJsonInput" type="file" accept="application/json" />
+          </label>
+        </div>
+      </header>
+
+      <section class="summary-grid" aria-label="Resumo">
+        <article>
+          <span id="peopleCount">0</span>
+          <p>colaboradores</p>
+        </article>
+        <article>
+          <span id="scheduledCount">0</span>
+          <p>ferias cadastradas</p>
+        </article>
+        <article>
+          <span id="monthCount">0</span>
+          <p>no mes exibido</p>
+        </article>
+        <article class="risk">
+          <span id="conflictCount">0</span>
+          <p>alertas de sobreposicao</p>
+        </article>
+      </section>
+
+      <section class="planner-layout">
+        <section class="panel schedule-panel">
+          <div class="controls">
+            <div class="tabs" role="tablist" aria-label="Modo de visualizacao">
+              <button class="tab active" id="calendarTab" type="button">Calendario</button>
+              <button class="tab" id="listTab" type="button">Lista</button>
+            </div>
+            <div class="filters">
+              <select id="leaderFilter" aria-label="Filtrar por lider"></select>
+              <select id="areaFilter" aria-label="Filtrar por area"></select>
+            </div>
+          </div>
+
+          <div class="monthbar">
+            <button class="icon-button" id="previousMonth" type="button" aria-label="Mes anterior">‹</button>
+            <h2 id="monthTitle"></h2>
+            <button class="icon-button" id="nextMonth" type="button" aria-label="Proximo mes">›</button>
+          </div>
+
+          <div id="calendarView" class="calendar-view"></div>
+          <div id="listView" class="list-view hidden"></div>
+        </section>
+
+        <section class="panel roster-panel">
+          <div class="panel-heading">
+            <div>
+              <h2>Cadastro por funcionario</h2>
+              <p>Informe o inicio e a quantidade de dias. O fim e calculado em dias corridos.</p>
+            </div>
+            <button class="text-button" id="clearDraftsButton" type="button">Limpar campos</button>
+          </div>
+
+          <div class="legend" aria-label="Cores por area">
+            <span class="legend-item dp">DP</span>
+            <span class="legend-item fiscal">Fiscal</span>
+            <span class="legend-item contabil">Contabil</span>
+            <span class="legend-item outros">Outros</span>
+          </div>
+
+          <div id="rosterView" class="roster-view"></div>
+        </section>
+      </section>
+    </main>
+
+    <template id="emptyStateTemplate">
+      <div class="empty-state">
+        <strong>Nenhum periodo encontrado</strong>
+        <p>Cadastre ferias ou ajuste os filtros para visualizar o cronograma.</p>
+      </div>
+    </template>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
