@@ -1,18 +1,21 @@
 :root {
   color-scheme: light;
-  --bg: #f6f7f4;
+  --bg: #f9f9f9;
   --panel: #ffffff;
-  --ink: #1d2522;
-  --muted: #6d756f;
-  --line: #dce1db;
-  --brand: #0f766e;
-  --brand-strong: #0b5c55;
-  --accent: #c47c2c;
-  --danger: #b42318;
-  --danger-bg: #fff1ef;
-  --soft: #edf7f5;
-  --shadow: 0 18px 44px rgba(37, 45, 40, 0.08);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ink: #141414;
+  --muted: #626262;
+  --line: #e1dccc;
+  --brand: #0171e4;
+  --brand-strong: #0f1727;
+  --brand-deep: #0f1727;
+  --accent: #e1dccc;
+  --accent-soft: #f4f1e8;
+  --danger: #f25461;
+  --danger-bg: #fff0f1;
+  --soft: #f9f9f9;
+  --steel: #3d3d3d;
+  --shadow: 0 18px 44px rgba(15, 23, 39, 0.1);
+  font-family: Lato, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 * {
@@ -22,7 +25,9 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: var(--bg);
+  background:
+    linear-gradient(180deg, rgba(15, 23, 39, 0.09), rgba(249, 249, 249, 0) 260px),
+    var(--bg);
   color: var(--ink);
 }
 
@@ -49,6 +54,11 @@ button {
   gap: 20px;
   align-items: center;
   margin-bottom: 22px;
+  padding: 18px 20px;
+  border: 1px solid rgba(15, 23, 39, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: var(--shadow);
 }
 
 .eyebrow {
@@ -70,6 +80,7 @@ h1 {
   font-size: clamp(2rem, 4vw, 3.8rem);
   line-height: 1;
   letter-spacing: 0;
+  color: var(--brand-deep);
 }
 
 h2 {
@@ -109,6 +120,8 @@ h2 {
   padding: 0 14px;
   display: inline-flex;
   align-items: center;
+  border-color: rgba(1, 113, 228, 0.25);
+  color: var(--brand-deep);
 }
 
 .primary {
@@ -120,6 +133,7 @@ h2 {
 }
 
 .primary:hover,
+.ghost:hover,
 .icon-button:hover,
 .tab.active {
   background: var(--brand-strong);
@@ -154,7 +168,10 @@ h2 {
 }
 
 .summary-grid article {
-  padding: 16px;
+  padding: 16px 18px;
+  border-top: 3px solid var(--brand-strong);
+  display: grid;
+  gap: 4px;
 }
 
 .summary-grid span {
@@ -162,6 +179,7 @@ h2 {
   margin-bottom: 5px;
   font-size: 1.7rem;
   font-weight: 850;
+  color: var(--brand-deep);
 }
 
 .summary-grid p {
@@ -173,15 +191,19 @@ h2 {
   color: var(--danger);
 }
 
+.summary-grid .risk {
+  border-top-color: var(--danger);
+}
+
 .planner-layout {
   display: grid;
-  grid-template-columns: minmax(560px, 1.05fr) minmax(460px, 0.95fr);
+  grid-template-columns: minmax(0, 0.94fr) minmax(560px, 1.06fr);
   gap: 16px;
   align-items: start;
 }
 
 .panel {
-  padding: 16px;
+  padding: 18px;
 }
 
 .form-panel {
@@ -231,23 +253,23 @@ input {
 }
 
 .area-select.dp {
-  background: #e8f7ee;
-  color: #166534;
+  background: #eaf3ff;
+  color: #0f1727;
 }
 
 .area-select.fiscal {
-  background: #e9f1ff;
-  color: #1d4ed8;
+  background: #fff0f1;
+  color: #b42331;
 }
 
 .area-select.contabil {
-  background: #fff2db;
-  color: #9a4f00;
+  background: var(--accent-soft);
+  color: #3d3d3d;
 }
 
 .area-select.outros {
-  background: #f1f2f0;
-  color: #4b554f;
+  background: #f2f5ef;
+  color: #4e5a52;
 }
 
 textarea {
@@ -308,6 +330,7 @@ textarea {
   margin: 5px 0 0;
   color: var(--muted);
   font-size: 0.9rem;
+  line-height: 1.25;
 }
 
 .controls {
@@ -356,29 +379,29 @@ textarea {
 .legend-item.dp,
 .area-pill.dp,
 .day-event.dp {
-  background: #e8f7ee;
-  color: #166534;
+  background: #eaf3ff;
+  color: #0f1727;
 }
 
 .legend-item.fiscal,
 .area-pill.fiscal,
 .day-event.fiscal {
-  background: #e9f1ff;
-  color: #1d4ed8;
+  background: #fff0f1;
+  color: #b42331;
 }
 
 .legend-item.contabil,
 .area-pill.contabil,
 .day-event.contabil {
-  background: #fff2db;
-  color: #9a4f00;
+  background: var(--accent-soft);
+  color: #3d3d3d;
 }
 
 .legend-item.outros,
 .area-pill.outros,
 .day-event.outros {
-  background: #f1f2f0;
-  color: #4b554f;
+  background: #f2f5ef;
+  color: #4e5a52;
 }
 
 .monthbar {
@@ -395,7 +418,7 @@ textarea {
 
 .list-view {
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 
 .roster-view {
@@ -405,13 +428,13 @@ textarea {
 .roster-table {
   display: grid;
   gap: 8px;
-  min-width: 820px;
+  min-width: 800px;
 }
 
 .roster-head,
 .roster-row {
   display: grid;
-  grid-template-columns: minmax(220px, 1.3fr) 88px 100px 150px 96px 124px 84px;
+  grid-template-columns: minmax(210px, 1.2fr) 92px 92px 132px 80px 112px 76px;
   gap: 8px;
   align-items: center;
 }
@@ -428,13 +451,24 @@ textarea {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #fff;
-  padding: 10px;
+  padding: 11px;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
+}
+
+.roster-row:hover {
+  transform: translateY(-1px);
+}
+
+.roster-row:focus-within {
+  border-color: rgba(1, 113, 228, 0.56);
+  box-shadow: 0 0 0 3px rgba(1, 113, 228, 0.12);
 }
 
 .employee-cell strong,
 .employee-cell span,
 .employee-cell small {
   display: block;
+  overflow-wrap: anywhere;
 }
 
 .employee-cell span,
@@ -445,11 +479,13 @@ textarea {
 .employee-cell span {
   margin-top: 2px;
   font-size: 0.86rem;
+  line-height: 1.18;
 }
 
 .employee-cell small {
   margin-top: 1px;
   font-size: 0.76rem;
+  line-height: 1.22;
 }
 
 .admission-cell {
@@ -484,19 +520,24 @@ textarea {
 .save-row:disabled {
   cursor: not-allowed;
   border-color: var(--line);
-  background: #eef0ec;
-  color: #899189;
+  background: #edf2ed;
+  color: #8a948d;
 }
 
 .vacation-row {
   display: grid;
-  grid-template-columns: minmax(180px, 1.4fr) 90px minmax(150px, 1fr) minmax(140px, 0.9fr) 122px auto;
-  gap: 12px;
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "name area"
+    "date status"
+    "meta actions";
+  gap: 9px 14px;
+  align-items: start;
   border: 1px solid var(--line);
   border-radius: 8px;
-  padding: 12px;
+  padding: 14px;
   background: #fff;
+  box-shadow: 0 10px 22px rgba(15, 23, 39, 0.04);
 }
 
 .vacation-row.conflict {
@@ -504,9 +545,37 @@ textarea {
   background: var(--danger-bg);
 }
 
+.vacation-row > :nth-child(1) {
+  grid-area: name;
+}
+
+.vacation-row > :nth-child(2) {
+  grid-area: area;
+  justify-self: end;
+}
+
+.vacation-row > :nth-child(3) {
+  grid-area: meta;
+}
+
+.vacation-row > :nth-child(4) {
+  grid-area: date;
+}
+
+.vacation-row > :nth-child(5) {
+  grid-area: status;
+  justify-self: end;
+}
+
+.vacation-row > :nth-child(6) {
+  grid-area: actions;
+  justify-self: end;
+}
+
 .name-cell strong,
 .date-cell strong {
   display: block;
+  line-height: 1.15;
 }
 
 .meta,
@@ -514,11 +583,13 @@ textarea {
 .empty-state p {
   color: var(--muted);
   font-size: 0.88rem;
+  line-height: 1.28;
 }
 
 .badge {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   width: fit-content;
   min-height: 28px;
   padding: 0 9px;
@@ -542,6 +613,7 @@ textarea {
 .badge.conflict-badge {
   background: #ffe2df;
   color: var(--danger);
+  white-space: nowrap;
 }
 
 .row-actions {
@@ -565,11 +637,11 @@ textarea {
 
 .calendar-grid {
   display: grid;
-  grid-template-columns: repeat(7, minmax(132px, 1fr));
+  grid-template-columns: repeat(7, minmax(116px, 1fr));
   border: 1px solid var(--line);
   border-radius: 8px;
   overflow: hidden;
-  min-width: 880px;
+  min-width: 760px;
 }
 
 .weekday,
@@ -585,8 +657,9 @@ textarea {
 
 .weekday {
   padding: 10px;
-  background: #f0f3ef;
+  background: var(--brand-deep);
   color: var(--muted);
+  color: #f9f9f9;
   font-size: 0.78rem;
   font-weight: 850;
   text-transform: uppercase;
@@ -603,7 +676,7 @@ textarea {
 }
 
 .day-cell.outside {
-  background: #f6f7f4;
+  background: #f7faf6;
   color: #a2aaa4;
 }
 
@@ -684,11 +757,69 @@ textarea {
   }
 
   .vacation-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) auto;
   }
 
   .row-actions {
     justify-content: start;
+  }
+}
+
+@media (max-width: 1320px) {
+  .roster-view {
+    overflow-x: visible;
+  }
+
+  .roster-table {
+    min-width: 0;
+  }
+
+  .roster-head {
+    display: none;
+  }
+
+  .roster-row {
+    grid-template-columns: minmax(220px, 1fr) 96px 108px 108px;
+    grid-template-areas:
+      "employee area admission save"
+      "employee start days end";
+    align-items: end;
+    gap: 10px 12px;
+  }
+
+  .roster-row > .employee-cell {
+    grid-area: employee;
+    align-self: center;
+  }
+
+  .roster-row > label[data-field],
+  .roster-row > .compact-label {
+    min-width: 0;
+  }
+
+  .roster-row > label:nth-of-type(1) {
+    grid-area: area;
+  }
+
+  .roster-row > .admission-cell {
+    grid-area: admission;
+  }
+
+  .roster-row > label:nth-of-type(2) {
+    grid-area: start;
+  }
+
+  .roster-row > label:nth-of-type(3) {
+    grid-area: days;
+  }
+
+  .roster-row > output {
+    grid-area: end;
+    align-self: center;
+  }
+
+  .roster-row > .save-row {
+    grid-area: save;
   }
 }
 
@@ -726,5 +857,31 @@ textarea {
   .tabs,
   .tab {
     width: 100%;
+  }
+
+  .vacation-row {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "name"
+      "area"
+      "date"
+      "meta"
+      "status"
+      "actions";
+  }
+
+  .vacation-row > :nth-child(2),
+  .vacation-row > :nth-child(5),
+  .vacation-row > :nth-child(6) {
+    justify-self: start;
+  }
+
+  .roster-row {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "employee employee"
+      "area admission"
+      "start days"
+      "end save";
   }
 }
